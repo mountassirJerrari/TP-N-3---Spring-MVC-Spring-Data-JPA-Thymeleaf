@@ -20,13 +20,19 @@ public class PatientController {
 
 
     @GetMapping
-    public String listPatients(Model model,
-                               @RequestParam(name = "page", defaultValue = "0") int page,
-                               @RequestParam(name = "size", defaultValue = "3") int size) {
-        Page<Patient> patients = patientRepository.findAll(PageRequest.of(page, size));
-        model.addAttribute("patients", patients);
+    public String index(
+            Model model,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "3") int size,
+            @RequestParam(name = "keyword", defaultValue = "") String keyword) {
+
+        Page<Patient> patients = patientRepository.findByNomContaining(keyword, PageRequest.of(page, size));
+
+        model.addAttribute("patients", patients.getContent());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", patients.getTotalPages());
+        model.addAttribute("keyword", keyword); // Keep search term in the UI
+
         return "patients";
     }
 

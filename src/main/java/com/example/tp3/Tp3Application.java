@@ -18,7 +18,7 @@ public class Tp3Application {
 	CommandLineRunner start(PatientRepository patientRepository){
 		return args ->
 		{
-			patientRepository.save(new Patient());
+			patientRepository.save(Patient.builder().nom("snater").build());
 			patientRepository.save(new Patient());
 			patientRepository.save(new Patient());
 			patientRepository.save(new Patient());
