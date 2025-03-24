@@ -16,7 +16,7 @@ public class RendezVous {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date date;
-    private com.tp2.demo.entities.StatusRDV annule;
+    private StatusRDV annule;
     @ManyToOne
     private Patient patient;
     @ManyToOne

@@ -24,6 +24,6 @@ public class Patient {
     private Date dateNaissanec;
     private boolean malade;
     @OneToMany(mappedBy = "patient" , fetch = FetchType.LAZY)
-    private Collection<com.tp2.demo.entities.RendezVous> rendezVous;
+    private Collection<RendezVous> rendezVous;
     private int score;
 }
