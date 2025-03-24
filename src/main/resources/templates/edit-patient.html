@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Patient</title>
+    <link href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Edit Patient</h2>
+    <form th:action="@{/patients/update/{id}(id=${patient.id})}" method="post" th:object="${patient}">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" th:field="*{nom}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" th:field="*{dateNaissance}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Malade</label>
+            <select class="form-control" th:field="*{malade}">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Score</label>
+            <input type="number" class="form-control" th:field="*{score}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Patient</button>
+    </form>
+</div>
+</body>
+</html>
